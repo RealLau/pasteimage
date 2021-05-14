@@ -6,7 +6,6 @@
 */
 
 (function($) {
-
 	$.pasteimage = function(callback) {
 		
 		var allowPaste = true;
@@ -14,7 +13,12 @@
 		if(typeof(callback) == "function") {
 			
 			// Patch jQuery to add clipboardData property support in the event object
-			$.event.props.push('clipboardData');
+			// since jquery 3.0.0, $.event.props is removed, see https://jquery.com/upgrade-guide/3.0/#breaking-change-jquery-event-props-and-jquery-event-fixhooks-removed
+			if($.fn.jquery.charAt(0)==="3"){
+				$.event.addProp('clipboardData');
+			}else{
+				$.event.props.push('clipboardData');
+			}
 			// Add the paste event listener
 			$(document).bind("paste", doPaste);
 

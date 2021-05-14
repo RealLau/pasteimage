@@ -82,3 +82,7 @@ Doesn't always work depending on method used to "copy" the image (e.g., Right Cl
 Safari support to be tested.
 
 IE not supported.
+
+LICENSE
+-------------------
+[MIT](https://opensource.org/licenses/MIT)
